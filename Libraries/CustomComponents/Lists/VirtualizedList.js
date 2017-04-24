@@ -256,6 +256,7 @@ class VirtualizedList extends React.PureComponent<OptionalProps, Props, State> {
       _usedIndexForKey = true;
       return String(index);
     },
+    scrollEventThrottle: 50,
     maxToRenderPerBatch: 10,
     onEndReached: () => {},
     onEndReachedThreshold: 2, // multiples of length
@@ -417,7 +418,7 @@ class VirtualizedList extends React.PureComponent<OptionalProps, Props, State> {
         onScroll: this._onScroll,
         onScrollBeginDrag: this._onScrollBeginDrag,
         ref: this._captureScrollRef,
-        scrollEventThrottle: 50, // TODO: Android support
+        scrollEventThrottle: this.props.scrollEventThrottle, // TODO: Android support
       },
       cells,
     );
